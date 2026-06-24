@@ -1,7 +1,7 @@
 <h1 align="center">Roberto Parente</h1>
 
 <p align="center">
-  <b>Test Engineering Technician @ Salcomp</b> · Manaus, Brazil 🇧🇷
+  <b>Test Engineering  @ Salcomp</b> · Manaus, Brazil 🇧🇷
 </p>
 
 <p align="center">
@@ -20,6 +20,7 @@ Meu trabalho une eletrônica de teste, análise de dados de produção e desenvo
 - 🐍 Migrei de **Visual Basic / C#** para **Python** — linguagem principal hoje
 - 🖥️ Entrego software desktop Windows do zero: da lógica até o instalador para produção
 - 🤖 Estudos aplicados em **Computer Vision** para inspeção industrial e automação de processos
+- 🤖 Graduado em **Análise e Desenvolvimento de Software** 
 - 🎓 Pós-graduado em **Desenvolvimento de Testes Automatizados em Sistemas Inteligentes** e em **Engenharia de Software (Qualidade e Teste)**
 
 ---
