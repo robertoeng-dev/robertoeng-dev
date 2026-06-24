@@ -20,7 +20,7 @@ Meu trabalho une eletrônica de teste, análise de dados de produção e desenvo
 - 🐍 Migrei de **Visual Basic / C#** para **Python** — linguagem principal hoje
 - 🖥️ Entrego software desktop Windows do zero: da lógica até o instalador para produção
 - 🤖 Estudos aplicados em **Computer Vision** para inspeção industrial e automação de processos
-- 🤖 Graduado em **Análise e Desenvolvimento de Software** 
+- 🤖 Graduado em **Análise e Desenvolvimento de Sistemas** 
 - 🎓 Pós-graduado em **Desenvolvimento de Testes Automatizados em Sistemas Inteligentes** e em **Engenharia de Software (Qualidade e Teste)**
 
 ---
