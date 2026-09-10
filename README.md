@@ -1,94 +1,213 @@
-<h1 align="center">Roberto Parente</h1>
+# Roberto Parente
 
-<p align="center">
-  <b>Test Engineering  @ Salcomp</b> · Manaus, Brazil 🇧🇷
-</p>
+### Test Engineer @ Salcomp · I build the systems that make a factory measurable
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=robertoeng-dev&style=flat-square&color=blue" alt="profile views" />
-</p>
+I test lithium batteries and chargers for global consumer-electronics brands — and
+I write the production software that captures, validates and traces every result.
+**21 years** on the factory floor: LG, Sagem, Jabil, Flex, and Salcomp since 2018.
+Manaus, Brazil.
 
----
-
-### Sobre mim
-
-Atuo na engenharia de testes de baterias e carregadores para dispositivos **Apple** e **Samsung** na **Salcomp Manaus** — uma das maiores fabricantes de carregadores do mundo.
-
-Meu trabalho une eletrônica de teste, análise de dados de produção e desenvolvimento de software interno. Além das ferramentas de chão de fábrica, desenvolvo soluções próprias para modernizar o monitoramento de qualidade nas linhas de produção.
-
-- 🏭 Background sólido em **VSM**, KPIs de produção, calibração e automação de estações de teste
-- 🐍 Migrei de **Visual Basic / C#** para **Python** — linguagem principal hoje
-- 🖥️ Entrego software desktop Windows do zero: da lógica até o instalador para produção
-- 🤖 Estudos aplicados em **Computer Vision** para inspeção industrial e automação de processos
-- 🤖 Graduado em **Análise e Desenvolvimento de Sistemas** 
-- 🎓 Pós-graduado em **Desenvolvimento de Testes Automatizados em Sistemas Inteligentes** e em **Engenharia de Software (Qualidade e Teste)**
+Most people in manufacturing software come from one side or the other. I work on
+both: I can argue LSL/USL limits with the process engineer, then ship the Windows
+service that streams those results into PostgreSQL and survives the network
+dropping at 3 a.m.
 
 ---
 
-### Projetos em destaque
+## What that's worth, in numbers
 
-#### MES Client — Monitor de Resultados de Teste Industrial
-Sistema de rastreabilidade de dados de teste para linhas PCM Tester e CYG/NAVAJO, rodando 24h/7d em produção na Salcomp.
+| Problem | What I did | Result |
+|---|---|---|
+| Station capped at 1,500 UPH; vendor said buy a second one | Found the bottleneck was the test plan, not the hardware — proved it by benchmarking two CPUs, then cut timeouts to spec and dropped a step with no measurement | Test time **35s → 18s (−48%)**, cycle **45s → 31s (−31%)**, **~+31% UPH**, **zero CAPEX** |
+| New product; vendor said the existing stations wouldn't work — buy two more, millions of dollars | Led the retrofit of **3 idle stations** from an earlier program instead: commissioning, mechanical and electrical rework, programming, debug, working directly with R&D in China | Two machine purchases avoided, **millions of dollars** saved, NPI schedule met in full |
+| Supplier cells arriving near the lower spec limit; yield fell below 80%. Proposal: recharge ~80,000 cells at ~25 min each | Traced the rejects to a single wake-up step while the cells still met every functional requirement, and disabled that step alone — every other quality gate untouched | Yield back to target, **80,000+ cells not recharged**, **no line stoppage**, software-only |
+| Test stations sending two logs at once; the MES integration API discarded one | Read the test software, found the collision, and rewrote the send as a sequenced handshake — first log, wait for the transaction to confirm, then the second | **Log losses eliminated**, rework and traceability gaps closed, no hardware change |
 
-- Captura e processa automaticamente os CSVs gerados pelos equipamentos de teste
-- Envia resultados para PostgreSQL central com deduplicação e fila offline (tolerante a falhas de rede)
-- Interface dark no system tray Windows com autenticação por perfis (OPERADOR / ENGENHARIA)
-- Mapeamento de colunas CSV configurável via UI — suporte a novos modelos sem alterar código
-- Distribuído como instalador profissional com wizard de configuração por estação
+Two more, smaller but the same shape: a Visual Basic tool that recovered a broken
+MES route and **prevented ~3,500 batteries from being scrapped**, and another that
+**saved ~3,000 PCMs** after a serial-number programming station failed to write
+memory. Plus a C# poka-yoke enforcing FIFO and shelf life on battery cells, so an
+expired cell can't reach finished goods.
 
-`Python` · `Tkinter` · `PostgreSQL` · `PyInstaller` · `Inno Setup`
-
----
-
-#### Computer Vision Roadmap
-Estudos práticos documentados em visão computacional aplicada à manufatura: calibração de câmera, segmentação, OCR industrial e deep learning.
-
----
-
-### Stack & Ferramentas
-
-**Linguagens**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=c-sharp&logoColor=white)
-![Visual Basic](https://img.shields.io/badge/Visual%20Basic-512BD4?style=flat-square&logo=visual-studio&logoColor=white)
-
-**Desktop & Distribuição**
-
-![Tkinter](https://img.shields.io/badge/Tkinter-FFD43B?style=flat-square&logo=python&logoColor=black)
-![PyInstaller](https://img.shields.io/badge/PyInstaller-3776AB?style=flat-square&logo=python&logoColor=white)
-![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
-
-**Dados & Backend**
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white)
-
-**Visão Computacional**
-
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
-
-**Ferramentas**
-
-![VSCode](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+The pattern, if you're scanning: **I get told to buy equipment, and I find the
+answer in software instead.**
 
 ---
 
-### GitHub Stats
+## One system, three layers
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=robertoeng-dev&show_icons=true&theme=default&hide_title=false" alt="GitHub Stats" />
-</p>
+These aren't three side projects. They're one thing being built in stages — a
+data spine for the production line. Each layer feeds the next.
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=robertoeng-dev&theme=default" alt="GitHub Streak" />
-</p>
+```mermaid
+flowchart LR
+    A["<b>1 · COLLECT</b><br/>mes-client<br/><i>on every test station</i>"]
+    B["<b>2 · SEE</b><br/>mes-server<br/><i>yield, SPC, traceability</i>"]
+    C["<b>3 · INSPECT</b><br/>computer vision<br/><i>defect detection — in development</i>"]
+    DB[("PostgreSQL<br/>mes_test_results")]
+
+    A -->|"test results"| DB
+    DB --> B
+    C -->|"visual verdict"| DB
+    B -.->|"which defects to hunt"| C
+```
+
+### 1 · Collect — [mes-client](https://github.com/robertoeng-dev/mes-client)
+
+Runs 24/7 on each test station. Watches the CSV files that PCM Tester and
+CYG/NAVAJO equipment produce, reads only the new bytes, validates every row and
+writes to a central PostgreSQL — without ever losing a test result.
+
+- **Incremental byte-offset parsing** — files grow all shift; re-reading them
+  every 5 seconds would stall the station
+- **Schema-flexible ingestion via JSONB** — every product model has different CSV
+  columns; the database accepts any of them with no `ALTER TABLE`
+- **Offline queue with claim/ack semantics** — the network drops, the queue holds,
+  and nothing is deleted until the database confirms the write
+- **Spec-limit auditing** — compares the limits the tester actually used against
+  engineering's official spec, and logs every divergence
+- **Real deployment path** — PyInstaller build, Inno Setup wizard, Task Scheduler
+  auto-start, per-station config, secrets in `.env`
+
+`Python 3.13` · `PostgreSQL` · `Tkinter` · `psycopg2` · `PyInstaller` · `Inno Setup`
+
+### 2 · See — [mes-server](https://github.com/robertoeng-dev/mes-server)
+
+The other half. Turns what the client collects into decisions: First Pass Yield,
+UPH, failure traceability and statistical process control.
+
+- **Two personas, two designs** — operators need a glance-and-go line view;
+  engineering needs historical filtering and distribution analysis
+- **SPC with Cp/Cpk capability metrics** — the language quality engineers speak
+- **Read-only against production data** — writes only to its own carrier table,
+  so the dashboard can never corrupt the results it reports on
+
+`Django 6` · `PostgreSQL` · `pandas` · `numpy` · `scipy` · `Chart.js`
+
+### 3 · Inspect — machine vision on the line *(in development)*
+
+Automated cosmetic defect inspection: catching the bad part at the source instead
+of finding it downstream in electrical test. This is the layer that closes the
+loop — layer 2 tells you *which* defects are costing yield, and layer 3 goes
+looking for them in the image.
+
+The hard part isn't the vision. It's the integration. I'm building **VisionLink**,
+a Python service that sits between the machine-vision inspection program and the
+line PLC:
+
+- **Four-phase interlocked handshake** — `PART_IN_POSITION` → `LINK_BUSY` →
+  result written → `DONE`. Without the interlock bits you get a race condition
+  where the PLC reads the *previous* part's verdict. It only shows up at
+  production cadence, and it's the number-one defect in this class of integration
+- **State machine that never hangs** — every state has a timeout, every error
+  path signals the PLC on a dedicated fault bit and returns to `IDLE`
+- **Four replaceable modules** — vision client, PLC client, state machine,
+  persistence. The vision client doesn't know the PLC exists; the PLC client
+  resolves logical names (`part_in_position`, `result_ok`) through a YAML memory
+  map, so re-pointing it at different hardware is a config change
+- **Vendor protocol reverse-engineered, then verified live** — I reconstructed the
+  trigger and response format from the integrator's driver source, then confirmed
+  it against the running vision software: the trigger went out, and the vision
+  program's own debug tree showed it parsing the serial correctly
+- **Honest about what isn't proven** — the full OK/NG round trip needs the real
+  camera on the line, so that test closes at the factory, not on my bench
+
+Non-blocking async persistence writes serial, verdict, measurements and image
+path — if it falls over, the inspection cycle keeps running.
+
+`Python 3.13` · `FINS/TCP` · `PLC` · industrial machine vision · `pytest` · `PyInstaller`
+
+> Alongside it, I maintain the C#/.NET inspection application that ties an
+> existing connector-inspection station to MES — the same problem one generation
+> back, in a different language.
 
 ---
 
-### Contato
+## Also on the floor
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:robertotec.eng5@gmail.com)
+**AOI photo retrieval by serial number** — a technician pastes a list of serials
+and gets back every capture image for those units, for failure analysis. Written
+in PowerShell, documented so anyone on the floor can run it without help. Small
+tool, but it's the kind that actually gets used: no install, double-click, plain
+Portuguese instructions, and it tells you which serials it couldn't find.
 
-<p align="center"><i>Engenharia de Testes na fábrica. Código que vai para produção. Visão computacional no horizonte.</i></p>
+---
+
+## Toolbox
+
+| | |
+|---|---|
+| **Languages** | Python · C# · Visual Basic · SQL · PowerShell |
+| **Data** | PostgreSQL · pandas · numpy · scipy |
+| **Web / backend** | Django · Chart.js |
+| **Desktop & delivery** | Tkinter · PyInstaller · Inno Setup · Windows Task Scheduler |
+| **Vision** | OpenCV |
+| **Manufacturing** | Test automation · SPC (Cp/Cpk) · traceability · MES · VSM · calibration |
+
+---
+
+## Background
+
+- **Postgraduate — Software Engineering (Quality & Testing)** · 2025
+- **Postgraduate — Automated Testing for Intelligent Systems** · UEA, 2024
+- **B.Tech, Systems Analysis and Development** · 2024
+- **Electronics Technician** · IFAM, 2002
+- **Six Sigma Green Belt** (LG) · SMT for Industry 4.0 (ITEGAM)
+- Path: Visual Basic → C# → Python — always pointed at the production line
+
+**Where I've done it:** Salcomp (2018–), Flex/MASA — game consoles and set-top
+boxes, Jabil — digital cameras, Sagem — GSM handsets with JTAG boundary-scan,
+LG — DVD/TV test jigs. Five new production lines commissioned, three of them in
+partnership with teams in China and France.
+
+---
+
+## Contact
+
+- **Email** — [robertotec.eng5@gmail.com](mailto:robertotec.eng5@gmail.com)
+- **LinkedIn** — [roberto-parente-732b2a411](https://www.linkedin.com/in/roberto-parente-732b2a411/)
+- **Location** — Manaus, Amazonas, Brazil · open to remote
+- **Languages** — Portuguese (native) · English (advanced technical reading, intermediate conversation)
+
+---
+
+<details>
+<summary><b>🇧🇷 Português</b></summary>
+
+<br>
+
+Trabalho com engenharia de teste na Salcomp, em Manaus. Testo baterias de lítio e
+carregadores para marcas globais de eletrônicos de consumo — e escrevo os sistemas
+de produção que capturam, validam e rastreiam esses dados. São 21 anos de chão de
+fábrica: LG, Sagem, Jabil, Flex e Salcomp.
+
+Quase todo mundo em software para manufatura vem de um lado só. Eu trabalho nos
+dois: discuto limites LSL/USL com o engenheiro de processo e depois entrego o
+serviço Windows que joga esses resultados no PostgreSQL e sobrevive à rede caindo
+às 3 da manhã.
+
+**Não são três projetos separados — são três camadas do mesmo sistema:**
+
+**1 · Coletar** — [mes-client](https://github.com/robertoeng-dev/mes-client):
+agente que roda 24/7 em cada estação de teste. Leitura incremental por offset,
+schema flexível em JSONB, fila offline que não perde dado e auditoria de limites
+de especificação.
+
+**2 · Enxergar** — [mes-server](https://github.com/robertoeng-dev/mes-server):
+dashboard de First Pass Yield, UPH, rastreabilidade de falhas e CEP com Cp/Cpk.
+
+**3 · Inspecionar** — visão de máquina na linha *(em desenvolvimento)*: inspeção
+automática de defeito cosmético, pegando a peça ruim na origem em vez de no teste
+elétrico lá na frente. A parte difícil não é a visão — é a integração. Estou
+construindo o **VisionLink**, serviço em Python entre o programa de visão e o CLP
+da máquina: handshake intertravado de quatro tempos (que é o que evita o CLP ler
+o veredito da peça anterior), máquina de estados com timeout em todo estado, e
+quatro módulos substituíveis de forma independente.
+
+A camada 2 diz **quais** defeitos estão custando yield; a camada 3 vai procurá-los
+na imagem. É isso que fecha o ciclo.
+
+Formado em Análise e Desenvolvimento de Sistemas, com pós em Testes Automatizados
+para Sistemas Inteligentes e em Engenharia de Software (Qualidade e Testes).
+
+</details>
