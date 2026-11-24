@@ -125,6 +125,30 @@ path — if it falls over, the inspection cycle keeps running.
 
 ## Also on the floor
 
+**UPH Analyzer — time study from a phone video** *(internal tool, private repo)*.
+Manual cycle-time studies take a stopwatch, a clipboard and a day of someone's
+time. Here, automation films the machine for 1–3 minutes, and an offline Windows
+app does the rest:
+
+- **Motion per region of interest** (OpenCV) — every robot, rotary table and
+  linear guide gets its own ROI; the app detects when each one moves or waits,
+  splits every cycle into Westinghouse elements and classifies them AV / NNVA / NVA
+- **The bottleneck, not just the average** — cycle time, UPH against a
+  configurable target and takt, and the one stage that limits the line, with the
+  improvement opportunities ranked by UPH gained
+- **The engineer stays in charge** — a frame-by-frame editor with live markers
+  (green = moving, red = stopped, with a timer per position) and a full-screen
+  review that loops one cycle so a human can correct what the automation saw
+- **Report in minutes** — annotated video, Excel, and an HTML/PPTX report in the
+  company template; optional AI review (local Claude Code) writes the narrative,
+  the measurements always come from the video
+- **Before × after** — film again after the fix, and the new version shows the
+  UPH gain against the previous one
+- Operator hands via MediaPipe; ArUco markers for parts the camera can't separate
+
+`Python` · `OpenCV` · `MediaPipe` · `PySide6` · `pandas` · `python-pptx` · `FFmpeg` · `PyInstaller` · `Inno Setup`
+
+
 **AOI photo retrieval by serial number** — a technician pastes a list of serials
 and gets back every capture image for those units, for failure analysis. Written
 in PowerShell, documented so anyone on the floor can run it without help. Small
@@ -140,8 +164,8 @@ Portuguese instructions, and it tells you which serials it couldn't find.
 | **Languages** | Python · C# · Visual Basic · SQL · PowerShell |
 | **Data** | PostgreSQL · pandas · numpy · scipy |
 | **Web / backend** | Django · Chart.js |
-| **Desktop & delivery** | Tkinter · PyInstaller · Inno Setup · Windows Task Scheduler |
-| **Vision** | OpenCV |
+| **Desktop & delivery** | PySide6 · Tkinter · PyInstaller · Inno Setup · Windows Task Scheduler |
+| **Vision** | OpenCV · MediaPipe · ArUco |
 | **Manufacturing** | Test automation · SPC (Cp/Cpk) · traceability · MES · VSM · calibration |
 
 ---
@@ -206,6 +230,13 @@ quatro módulos substituíveis de forma independente.
 
 A camada 2 diz **quais** defeitos estão custando yield; a camada 3 vai procurá-los
 na imagem. É isso que fecha o ciclo.
+
+**Também no chão de fábrica — UPH Analyzer** *(ferramenta interna)*: cronoanálise
+a partir de um vídeo de 1–3 min da máquina. Mede o movimento de cada robô, mesa e
+guia linear, separa os elementos Westinghouse (AV/NNVA/NVA), aponta o GARGALO
+contra a meta de UPH e gera vídeo anotado, Excel e relatório HTML/PPTX. O
+engenheiro revisa tudo num editor com marcadores ao vivo e numa revisão em tela
+cheia do ciclo em loop.
 
 Formado em Análise e Desenvolvimento de Sistemas, com pós em Testes Automatizados
 para Sistemas Inteligentes e em Engenharia de Software (Qualidade e Testes).
